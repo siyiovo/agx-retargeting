@@ -1,0 +1,22 @@
+model:
+  urdf_path: "revo2/revo2_{side}_hand.urdf"
+  # Revo2 has no MCP frames, use fixed proximal origins as palm references
+  palm_landmarks: [index_pip, middle_pip, ring_pip, pinky_pip]
+  links:
+    palm: "{side}_base_link"
+    fingers: [thumb, index, middle, ring, pinky]
+    pip: "{side}_{finger}_proximal_link"
+    dip: "{side}_{finger}_distal_link"
+    tip: "{side}_{finger}_tip_link"
+    thumb:
+      cmc: "{side}_{finger}_metacarpal_link"
+      mcp: "{side}_{finger}_proximal_link"
+      ip: "{side}_{finger}_distal_link"
+
+preprocess:
+  scale: 1.0
+  # extra rotation in URDF root frame, extrinsic xyz degrees
+  input_rotation: {x: 0.0, y: 0.0, z: 0.0}
+
+motion:
+  velocity_decay_s: 0.02

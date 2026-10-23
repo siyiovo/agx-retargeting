@@ -1,0 +1,49 @@
+# PEP 517/518 build backend. Build isolation installs a setuptools version
+# that reads PEP 621 [project] metadata and PEP 639 SPDX license fields.
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agx-retargeting"
+version = "2026.10.22"
+description = "Hand retargeting with bounded nonlinear least squares"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "agx_retargeting/description/**/LICENSE"]
+dependencies = [
+    "numpy>=1.21.0",
+    "numpy-quaternion>=2024.0.13",
+    "numba>=0.61",
+    "pin>=3.8.0",
+    "proxsuite>=0.7.3",
+    "PyYAML>=6.0",
+    "scipy>=1.11.0",
+    "threadpoolctl>=3.1",
+]
+
+[project.optional-dependencies]
+revo2 = [
+    "pyAgxArm @ git+https://github.com/agilexrobotics/pyAgxArm.git@4b0f06585db3324222616999afeda9037df2e8bd",
+]
+webxr = [
+    "aiohttp>=3.9",
+    "xr_media @ git+https://github.com/AgilexOpensource/xr_media.git@4c1a40ac5dac45d2821d9f254606a014e38fc4a3",
+]
+visualization = [
+    "aiohttp>=3.9",
+    "viser>=1.1.1",
+    "yourdfpy>=0.0.60",
+]
+
+[project.scripts]
+agx-view = "agx_retargeting.visualization.viewer:main"
+
+[tool.setuptools.packages.find]
+include = ["agx_retargeting*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+agx_retargeting = ["description/**/*"]
+"agx_retargeting.config" = ["*.yaml"]

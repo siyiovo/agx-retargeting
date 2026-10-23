@@ -1,0 +1,16 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and releases use calendar versions in `YYYY.MM.DD` format.
+
+## [2026.10.22] - 2026-10-22
+
+### Added
+
+- Hand retargeting with q-method bone-end initialization, complementary pinch/shape tasks, bone directions, wrist and joint motion priors, and analytic Jacobians.
+- ProxQP and Dogbox backends for bounded nonlinear least squares, with ProxQP enabled by default.
+- Quest/WebXR input with HTTPS, session configuration, recording, and combined robot and tracked-skeleton visualization.
+- Revo2 and Wuji Hand models for both hands, with Revo2 position/time control through the arm controller SDK.
+- Input/output adapter interfaces and adaptation skills, packaged model assets, bilingual documentation, and MIT licensing with bundled model license notices.

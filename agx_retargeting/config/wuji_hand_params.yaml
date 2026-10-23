@@ -1,0 +1,21 @@
+model:
+  urdf_path: "wuji_hand/{side}.urdf"
+  links:
+    palm: "{side_short}_wrist"
+    fingers: [thumb, index_finger, middle_finger, ring_finger, pinky]
+    mcp: "{side_short}_{finger}_proximal"
+    pip: "{side_short}_{finger}_middle"
+    dip: "{side_short}_{finger}_distal"
+    tip: "{side_short}_{finger}_tip"
+    thumb:
+      cmc: "{side_short}_{finger}_proximal"
+      mcp: "{side_short}_{finger}_middle"
+      ip: "{side_short}_{finger}_distal"
+
+preprocess:
+  scale: 1.0
+  # extra rotation in URDF root frame, extrinsic xyz degrees
+  input_rotation: {x: 0.0, y: 0.0, z: 0.0}
+
+motion:
+  velocity_decay_s: 0.03
